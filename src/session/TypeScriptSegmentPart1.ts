@@ -136,3 +136,122 @@ function throwError(msg:string):never{
 }
 
 
+
+
+// Interface 
+
+interface Iproduct {
+    productName :string;
+    price:number
+}
+
+
+const product1:Iproduct= {
+    productName:"Pressurs medicine",
+    price:10
+}
+
+
+
+
+// Generics......
+function identity <T>(value:T):T{
+    return value
+}
+
+
+//  const data = identity(9)
+ const data = identity("shafayat")
+console.log(data)
+
+
+
+
+// generics with interface
+
+interface IApiRes<TLLm>{
+success:boolean,
+data:TLLm
+}
+
+const res2:IApiRes<string[]>={
+    success:true,
+    data:["rice","letils"]
+}
+// const res1:IApiRes<string>={
+//     success:true,
+//     data:"rice"
+
+// }
+
+
+
+// Constraints............. means badha boundary
+
+interface IPersonal{
+    name:string, 
+    add:string
+}
+
+
+function getName<T extends IPersonal >(param: T):string{
+    return param?.name
+
+}
+
+
+// keyof
+
+function getProperty<T ,k extends keyof T>(obj: T, key : k){
+    return obj[key]  //    obj.name   ||| obj[name]   = value ----> key er  value pabo
+}
+
+
+
+// enum...............
+
+enum OrderStatus {
+    pending,
+    shipped,
+    delivered,
+}
+
+let orderStatus = OrderStatus.delivered
+
+const Status = {
+    PENDING:'PENDING',
+    SHIPPED:"SHIPPED"
+} as const
+
+
+type StatusCheck= typeof Status[keyof typeof Status]
+
+const  typeBosiy :StatusCheck = "PENDING"
+
+console.log('last',typeBosiy)
+
+
+
+// conditional
+
+type IsString<T> = T extends string ? "YES" :"NO";
+
+type A = IsString<string>  //yes
+
+const result : A = "YES"
+
+
+// mapped
+
+type TReadOnly<T>={
+    readonly [k in keyof T]:T [k]
+}
+type TProductRedonly = TReadOnly<TProduct>
+
+type PartialProduct = Partial<TProduct>
+
+type RequriredProduct = Required<PartialProduct>
+
+type PickProduct = Pick<TProduct, "productName">
+
+type OmitProduct = Omit<TProduct ,"address">
