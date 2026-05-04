@@ -1,10 +1,10 @@
  
 
-//  const UserRoles= {
-//     Admin : "Admin",
-//     Editor : "Editor",
-//     Viewer : "Viewer"
-//  } as const
+ const UserRoles= {
+    Admin : "Admin",
+    Editor : "Editor",
+    Viewer : "Viewer"
+ } as const
 
 
 
@@ -13,12 +13,12 @@
 
 
 
-enum UserRoles {
-    Admin = "Admin",
-    Editor = "Editor",
-    Viewer = "Viewer"
-}
-const canEdite = (role: keyof typeof UserRoles)=>{
+// let UserRoles ={
+//     Admin = "Admin",
+//     Editor = "EDITOR",
+//     Viewer = "VIEWER"
+// }
+const canEdite = (role: (typeof UserRoles)[keyof typeof UserRoles])=>{
     if(role === UserRoles.Admin|| role === UserRoles.Editor){
         return true
     }else{
@@ -28,3 +28,6 @@ const canEdite = (role: keyof typeof UserRoles)=>{
 
 const isEditePermissable = canEdite(UserRoles.Editor)
 console.log(isEditePermissable)
+
+
+
