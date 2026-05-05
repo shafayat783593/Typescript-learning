@@ -255,3 +255,9 @@ type RequriredProduct = Required<PartialProduct>
 type PickProduct = Pick<TProduct, "productName">
 
 type OmitProduct = Omit<TProduct ,"address">
+
+
+interface ApiResponse<T> {
+  data: T;
+}
+
