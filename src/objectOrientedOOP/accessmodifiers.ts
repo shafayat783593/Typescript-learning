@@ -3,14 +3,14 @@
 class BankAccount {
    readonly userId:number;
    public userName:string;
-   protected userBlance:number
-    constructor(userId:number,userName:string ,userBlance:number){
+   protected userBalance:number
+    constructor(userId:number,userName:string ,userBalance:number){
         this.userName=userName
-        this.userBlance=userBlance
+        this.userBalance=userBalance
         this.userId=userId
     }
-    addBlance(blance:number){
-this.userBlance =this.userBlance + blance
+    addBlance(balance:number){
+this.userBalance =this.userBalance + balance
     }
 }
 
